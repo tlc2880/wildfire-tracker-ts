@@ -1,6 +1,11 @@
 import GoogleMapReact from 'google-map-react'
+import LocationMarker from './LocationMarker'
 
 type MapProps = {
+    eventData: {
+        ev: {},
+        index: number
+    },
     center: {
         lat: number,
         lng: number
@@ -9,6 +14,10 @@ type MapProps = {
 } & typeof defaultProps;
 
 const defaultProps = {
+    eventData: {
+        ev: {},
+        index: 0
+    },
     center: {
         lat: 42.3265,
         lng: -122.8756
@@ -24,7 +33,8 @@ const Map = (props: MapProps) => {
                 defaultCenter={ props.center }
                 defaultZoom={ props.zoom }
             >
-            </GoogleMapReact>
+                <LocationMarker lat={props.center.lat} lng={props.center.lng} />
+             </GoogleMapReact>
          </div>
     )
 }
