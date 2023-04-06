@@ -1,5 +1,17 @@
 import { useState, useEffect } from 'react'
 import Map from './components/Map'
+import Loader from './components/Loader'
+type IeventData = {
+  ev: {},
+  index: number
+}
+
+const center = {
+  lat: 42.3265,
+  lng: -122.8756
+}
+
+const zoom = 6
 
 function App() {
   const [eventData, setEventData] = useState([])
@@ -18,7 +30,7 @@ function App() {
   console.log(eventData);
   return (
     <div>
-      <Map />
+      { !loading ? <Map eventData ={eventData} center={center} zoom={zoom}/> : <h1>Loading</h1> }
     </div>
   );
 }
